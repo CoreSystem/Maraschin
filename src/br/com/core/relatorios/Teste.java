@@ -79,8 +79,9 @@ public class Teste extends javax.swing.JFrame {
             JasperPrint jp = JasperFillManager.fillReport(report, null, conn());
             JasperViewer.viewReport(jp);
 
-        } catch (JRException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
+            System.out.println(ex.getCause());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
