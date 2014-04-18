@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mCadastros = new javax.swing.JMenu();
         miMaterial = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         mMovimentacao = new javax.swing.JMenu();
         miRecebimento = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -55,6 +56,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mCadastros.add(miMaterial);
+
+        jMenuItem3.setText("Fornecedor");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        mCadastros.add(jMenuItem3);
 
         jMenuBar1.add(mCadastros);
 
@@ -110,7 +119,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2046, Short.MAX_VALUE))
+                .addGap(0, 3069, Short.MAX_VALUE))
             .addComponent(deskPane)
         );
         layout.setVerticalGroup(
@@ -173,11 +182,19 @@ public class Principal extends javax.swing.JFrame {
         }else{}
     }//GEN-LAST:event_mSairMouseClicked
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+     
+     deskPane.add(FrmFornecedor.getInstancia());
+
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane deskPane;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mCadastros;
     private javax.swing.JMenu mConfiguracoes;

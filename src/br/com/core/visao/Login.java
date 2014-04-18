@@ -214,6 +214,7 @@ public final class Login extends javax.swing.JFrame {
             @Override
             public void run() {
                 new Login().setVisible(true);
+                //sadasdsadasdsas
             }
         });
     }
