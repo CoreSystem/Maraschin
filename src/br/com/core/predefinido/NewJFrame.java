@@ -94,7 +94,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
     @SuppressWarnings("CallToThreadDumpStack")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(rec != null && !emp.isVisible()){
+        if(emp != null && !emp.isVisible()){
             lPane.remove(emp);
             emp = null;
         }

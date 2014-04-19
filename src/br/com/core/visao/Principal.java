@@ -2,8 +2,10 @@ package br.com.core.visao;
 
 import javax.swing.JOptionPane;
 import br.com.core.controle.Validacoes;
+import java.beans.PropertyVetoException;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
 
 /**
  * @author Core System™
@@ -22,8 +24,8 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        deskPane = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
+        deskPane = new javax.swing.JLayeredPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mCadastros = new javax.swing.JMenu();
         miMaterial = new javax.swing.JMenuItem();
@@ -119,14 +121,14 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3069, Short.MAX_VALUE))
-            .addComponent(deskPane)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
+                .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -137,42 +139,50 @@ public class Principal extends javax.swing.JFrame {
     private void miRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRecebimentoActionPerformed
         FrmRecebimento rec = new FrmRecebimento(this);
         Validacoes valida = new Validacoes();
-        valida.posicao(this, rec);
-        if (valida.isInstanceIn(deskPane, rec) == true) {
-            JOptionPane.showMessageDialog(null, "Já está aberto");
-            valida.selecionaFrame(rec);
-        } else {
-            deskPane.add(rec);
-            valida.selecionaFrame(rec);
-        }
+        
     }//GEN-LAST:event_miRecebimentoActionPerformed
 
-    @SuppressWarnings("empty-statement")
+    @SuppressWarnings({"empty-statement", "CallToThreadDumpStack"})
     private void miMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMaterialActionPerformed
-        FrmCadMaterial cad = new FrmCadMaterial(this);
-        Validacoes valida = new Validacoes();
-        valida.posicao(this, cad);
-        if (valida.isInstanceIn(deskPane, cad) == true) {
-            JOptionPane.showMessageDialog(null, "Já está aberto"); // Este comentário seria substituído por algum método para colocar o iFrame na frente dos outros que estivessem abertos
-            valida.selecionaFrame(cad);
-            cad.toFront();
-        } else {
-            deskPane.add(cad);
-            valida.selecionaFrame(cad);
+        
+        if(cadMaterial != null && !cadMaterial.isVisible()){
+            deskPane.remove(cadMaterial);
+            cadMaterial = null;
         }
+        if (cadMaterial == null) {
+            cadMaterial = new FrmCadMaterial(this);
+            Validacoes v = new Validacoes();
+            v.posicao(this, cadMaterial);
+            deskPane.add(cadMaterial);
+            try {
+                cadMaterial.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            cadMaterial.toFront();
+        }
+        
     }//GEN-LAST:event_miMaterialActionPerformed
 
     private void miEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEmpresaActionPerformed
-        JInternalFrame emp = new FrmCadEmpresa();
-        Validacoes valida = new Validacoes();
-        valida.posicao(this, emp);
-        if (valida.isInstanceIn(deskPane, emp) == true) {
-            JOptionPane.showMessageDialog(null, "Já está aberto"); // Este comentário seria substituído por algum método para colocar o iFrame na frente dos outros que estivessem abertos
-           
-            emp.moveToFront();
-        } else {
-            deskPane.add(emp);
-            valida.selecionaFrame(emp);
+        
+        if(cadEmpresa != null && !cadEmpresa.isVisible()){
+            deskPane.remove(cadEmpresa);
+            cadEmpresa = null;
+        }
+        if (cadEmpresa == null) {
+            cadEmpresa = new FrmCadMaterial(this);
+            Validacoes v = new Validacoes();
+            v.posicao(this, cadEmpresa);
+            deskPane.add(cadEmpresa);
+            try {
+                cadEmpresa.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            cadEmpresa.toFront();
         }
     }//GEN-LAST:event_miEmpresaActionPerformed
 
@@ -190,7 +200,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane deskPane;
+    private javax.swing.JLayeredPane deskPane;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -204,4 +214,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miMaterial;
     private javax.swing.JMenuItem miRecebimento;
     // End of variables declaration//GEN-END:variables
+    private JInternalFrame cadMaterial;
+    private JInternalFrame cadEmpresa;
+    
 }
