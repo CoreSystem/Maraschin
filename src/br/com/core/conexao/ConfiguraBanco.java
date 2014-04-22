@@ -1,6 +1,6 @@
 package br.com.core.conexao;
 
-import br.com.core.controle.Validacoes;
+import br.com.core.predefinido.Validacoes;
 import br.com.core.visao.Login;
 import java.awt.Color;
 import java.awt.HeadlessException;

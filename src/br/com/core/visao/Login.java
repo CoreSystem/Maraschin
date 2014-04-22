@@ -3,9 +3,9 @@ package br.com.core.visao;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import br.com.core.controle.TamanhoFixo;
-import br.com.core.controle.UpperCaseDocument;
-import br.com.core.controle.Validacoes;
+import br.com.core.predefinido.TamanhoFixo;
+import br.com.core.predefinido.UpperCaseDocument;
+import br.com.core.predefinido.Validacoes;
 import javax.swing.JOptionPane;
 
 /**

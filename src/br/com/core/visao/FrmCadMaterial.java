@@ -1,6 +1,7 @@
 package br.com.core.visao;
 
 import javax.swing.JFrame;
+
 /**
  * @author Core System™
  * @version v1.0

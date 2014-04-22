@@ -1,11 +1,10 @@
 package br.com.core.visao;
 
 import javax.swing.JOptionPane;
-import br.com.core.controle.Validacoes;
+import br.com.core.predefinido.Validacoes;
 import java.beans.PropertyVetoException;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
 
 /**
  * @author Core System™
@@ -32,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         mMovimentacao = new javax.swing.JMenu();
         miRecebimento = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        miRetirada = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         mConfiguracoes = new javax.swing.JMenu();
         miEmpresa = new javax.swing.JMenuItem();
@@ -81,9 +80,14 @@ public class Principal extends javax.swing.JFrame {
         });
         mMovimentacao.add(miRecebimento);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Retirada.png"))); // NOI18N
-        jMenuItem1.setText("Retirada");
-        mMovimentacao.add(jMenuItem1);
+        miRetirada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Retirada.png"))); // NOI18N
+        miRetirada.setText("Retirada");
+        miRetirada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRetiradaActionPerformed(evt);
+            }
+        });
+        mMovimentacao.add(miRetirada);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Graphic.png"))); // NOI18N
         jMenuItem2.setText("Balanço");
@@ -122,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,17 +139,31 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    @SuppressWarnings("empty-statement")
+    @SuppressWarnings({"empty-statement", "CallToThreadDumpStack"})
     private void miRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRecebimentoActionPerformed
-        FrmRecebimento rec = new FrmRecebimento(this);
-        Validacoes valida = new Validacoes();
-        
+        if (recebimento != null && !recebimento.isVisible()) {
+            deskPane.remove(recebimento);
+            recebimento = null;
+        }
+        if (recebimento == null) {
+            recebimento = new FrmRecebimento(this);
+            Validacoes v = new Validacoes();
+            v.posicao(this, recebimento);
+            deskPane.add(recebimento);
+            try {
+                recebimento.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            recebimento.toFront();
+        }
     }//GEN-LAST:event_miRecebimentoActionPerformed
 
     @SuppressWarnings({"empty-statement", "CallToThreadDumpStack"})
     private void miMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMaterialActionPerformed
-        
-        if(cadMaterial != null && !cadMaterial.isVisible()){
+
+        if (cadMaterial != null && !cadMaterial.isVisible()) {
             deskPane.remove(cadMaterial);
             cadMaterial = null;
         }
@@ -159,20 +177,20 @@ public class Principal extends javax.swing.JFrame {
             } catch (PropertyVetoException ex) {
                 ex.printStackTrace();
             }
-        }else{
+        } else {
             cadMaterial.toFront();
         }
-        
+
     }//GEN-LAST:event_miMaterialActionPerformed
 
+    @SuppressWarnings("CallToThreadDumpStack")
     private void miEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEmpresaActionPerformed
-        
-        if(cadEmpresa != null && !cadEmpresa.isVisible()){
+        if (cadEmpresa != null && !cadEmpresa.isVisible()) {
             deskPane.remove(cadEmpresa);
             cadEmpresa = null;
         }
         if (cadEmpresa == null) {
-            cadEmpresa = new FrmCadMaterial(this);
+            cadEmpresa = new FrmCadEmpresa();
             Validacoes v = new Validacoes();
             v.posicao(this, cadEmpresa);
             deskPane.add(cadEmpresa);
@@ -181,28 +199,47 @@ public class Principal extends javax.swing.JFrame {
             } catch (PropertyVetoException ex) {
                 ex.printStackTrace();
             }
-        }else{
+        } else {
             cadEmpresa.toFront();
         }
     }//GEN-LAST:event_miEmpresaActionPerformed
 
     private void mSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseClicked
-        if(JOptionPane.showConfirmDialog(this, "Deseja realmente sair?","Sair",JOptionPane.YES_NO_OPTION) == 0){
+        int x = JOptionPane.showConfirmDialog(this, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);
+        if (x == 0) {
             System.exit(0);
-        }else{}
+        } else {
+        }
     }//GEN-LAST:event_mSairMouseClicked
 
+    @SuppressWarnings("CallToThreadDumpStack")
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-     
-     deskPane.add(FrmFornecedor.getInstancia());
-
-        
+        if (cadFornecedor != null && !cadFornecedor.isVisible()) {
+            deskPane.remove(cadFornecedor);
+            cadFornecedor = null;
+        }
+        if (cadFornecedor == null) {
+            cadFornecedor = new FrmFornecedor();
+            Validacoes v = new Validacoes();
+            v.posicao(this, cadFornecedor);
+            deskPane.add(cadFornecedor);
+            try {
+                cadFornecedor.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            cadFornecedor.toFront();
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    @SuppressWarnings("CallToThreadDumpStack")
+    private void miRetiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRetiradaActionPerformed
+        // FrmRetirada
+    }//GEN-LAST:event_miRetiradaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane deskPane;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
@@ -213,8 +250,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miEmpresa;
     private javax.swing.JMenuItem miMaterial;
     private javax.swing.JMenuItem miRecebimento;
+    private javax.swing.JMenuItem miRetirada;
     // End of variables declaration//GEN-END:variables
     private JInternalFrame cadMaterial;
     private JInternalFrame cadEmpresa;
-    
+    private JInternalFrame cadFornecedor;
+    private JInternalFrame unidadeMedida;
+    private JInternalFrame recebimento;
 }

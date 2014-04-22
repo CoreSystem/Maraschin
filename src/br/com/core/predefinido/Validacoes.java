@@ -1,10 +1,13 @@
-package br.com.core.controle;
+package br.com.core.predefinido;
 
+import br.com.core.visao.FrmRecebimento;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +16,6 @@ import javax.swing.JOptionPane;
  */
 public class Validacoes {
 
-    
-    
-    
-    
     public boolean isValidLogin(String usuario, String senha) {
         boolean acesso = false;
 
@@ -63,4 +62,6 @@ public class Validacoes {
 
         return pwd;
     }
+    
+    
 }

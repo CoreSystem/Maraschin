@@ -1,14 +1,15 @@
-
 package br.com.core.visao;
 
-
+/**
+ * @author Core System™
+ * @version v1.0
+ */
 public class FrmUnidadeMedida extends javax.swing.JInternalFrame {
 
-  
     public FrmUnidadeMedida() {
         initComponents();
-     
- 
+        this.setVisible(true);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -200,8 +201,6 @@ public class FrmUnidadeMedida extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
- 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnNovo;

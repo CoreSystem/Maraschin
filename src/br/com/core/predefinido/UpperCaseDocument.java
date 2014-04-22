@@ -1,4 +1,4 @@
-package br.com.core.controle;
+package br.com.core.predefinido;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

@@ -4,7 +4,6 @@
  */
 package br.com.core.predefinido;
 
-import br.com.core.controle.Validacoes;
 import br.com.core.visao.FrmCadEmpresa;
 import br.com.core.visao.FrmRecebimento;
 import java.beans.PropertyVetoException;

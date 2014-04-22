@@ -1,4 +1,4 @@
-package br.com.core.controle;
+package br.com.core.predefinido;
 
 import java.text.ParseException;
 import javax.swing.JOptionPane;

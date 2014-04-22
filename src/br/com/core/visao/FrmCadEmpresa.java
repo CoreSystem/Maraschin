@@ -1,6 +1,6 @@
 package br.com.core.visao;
 
-import br.com.core.controle.Mascaras;
+import br.com.core.predefinido.Mascaras;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;

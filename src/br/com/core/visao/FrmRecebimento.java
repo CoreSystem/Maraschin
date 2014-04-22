@@ -1,8 +1,9 @@
 package br.com.core.visao;
 
-import br.com.core.controle.Mascaras;
+import br.com.core.predefinido.Mascaras;
 import javax.swing.JFrame;
 import javax.swing.text.MaskFormatter;
+
 /**
  * @author Core System™
  * @version v1.0
