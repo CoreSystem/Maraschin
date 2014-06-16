@@ -34,7 +34,7 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNumNota = new javax.swing.JTextField();
         txtSerieNota = new javax.swing.JTextField();
-        txtDataEmissaoNota = new javax.swing.JTextField();
+        txtDataEmissaoNota = new javax.swing.JFormattedTextField(mascara("##/##/####"));
         txtValorNota = new javax.swing.JTextField();
         txtData = new javax.swing.JFormattedTextField(mascara("##/##/####"));
         jTextField2 = new javax.swing.JTextField();
@@ -62,9 +62,6 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
 
         tblItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
@@ -89,7 +86,7 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +164,7 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
 
         txtNumNota.getAccessibleContext().setAccessibleName("Número");
         txtSerieNota.getAccessibleContext().setAccessibleName("Série");
-        txtDataEmissaoNota.getAccessibleContext().setAccessibleName("Data Emissão");
+        txtDataEmissaoNota.getAccessibleContext().setAccessibleName("");
 
         jTextField2.setBackground(new java.awt.Color(240, 240, 240));
         jTextField2.setFocusable(false);
@@ -175,6 +172,7 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Fornecedor");
 
+        txtFornecedor.setEditable(false);
         txtFornecedor.setFocusable(false);
 
         javax.swing.GroupLayout pnlRecLayout = new javax.swing.GroupLayout(pnlRec);
@@ -248,7 +246,7 @@ public class FrmRecebimento extends javax.swing.JInternalFrame {
                 .addGroup(pnlRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlRec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlRecebimento, java.awt.BorderLayout.CENTER);

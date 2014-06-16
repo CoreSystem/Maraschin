@@ -6,8 +6,10 @@ package br.com.core.visao;
  */
 public class FrmCidade extends javax.swing.JInternalFrame {
 
+    @SuppressWarnings("CallToThreadDumpStack")
     public FrmCidade() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -15,14 +17,16 @@ public class FrmCidade extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnPrimeiro = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
+        btnSeguinte = new javax.swing.JButton();
+        btnUltimo = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnGravar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -32,62 +36,114 @@ public class FrmCidade extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        lblAuxiliar = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Cadastro de Cidades");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setPreferredSize(new java.awt.Dimension(900, 600));
+        setVisible(true);
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("<<");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btnPrimeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/br_prev_icon&16.png"))); // NOI18N
+        btnPrimeiro.setFocusable(false);
+        btnPrimeiro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPrimeiro.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnPrimeiro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnPrimeiro);
 
-        jButton2.setText("<");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        btnAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/br_prev_icon&24.png"))); // NOI18N
+        btnAnterior.setFocusable(false);
+        btnAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAnterior.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnAnterior);
 
-        jButton3.setText(">");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btnSeguinte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/br_next_icon&24.png"))); // NOI18N
+        btnSeguinte.setFocusable(false);
+        btnSeguinte.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSeguinte.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnSeguinte.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnSeguinte);
 
-        jButton4.setText(">>");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        btnUltimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/br_next_icon&16.png"))); // NOI18N
+        btnUltimo.setFocusable(false);
+        btnUltimo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUltimo.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnUltimo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnUltimo);
 
-        jButton5.setText("+Novo");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/doc_new_icon&24.png"))); // NOI18N
+        btnNovo.setToolTipText("Novo");
+        btnNovo.setFocusable(false);
+        btnNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoMouseExited(evt);
+            }
+        });
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnNovo);
 
-        jButton6.setText("Excluir");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
+        btnGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/save_icon&24.png"))); // NOI18N
+        btnGravar.setToolTipText("Salvar");
+        btnGravar.setEnabled(false);
+        btnGravar.setFocusable(false);
+        btnGravar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGravar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnGravar);
 
-        jButton7.setText("Alterar");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton7);
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/cancel_icon&24.png"))); // NOI18N
+        btnCancelar.setToolTipText("Cancelar");
+        btnCancelar.setEnabled(false);
+        btnCancelar.setFocusable(false);
+        btnCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnCancelar);
 
-        jButton8.setText("Salvar");
-        jButton8.setFocusable(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton8);
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/doc_edit_icon&24.png"))); // NOI18N
+        btnEditar.setToolTipText("Editar/Alterar");
+        btnEditar.setFocusable(false);
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnEditar);
+
+        btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/doc_minus_icon&24.png"))); // NOI18N
+        btnDeletar.setToolTipText("Deletar");
+        btnDeletar.setFocusable(false);
+        btnDeletar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeletar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnDeletar);
+
+        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/toolbar/cc/black/png/delete_icon&24.png"))); // NOI18N
+        btnFechar.setToolTipText("Fechar");
+        btnFechar.setFocusable(false);
+        btnFechar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnFechar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnFechar);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
@@ -95,6 +151,9 @@ public class FrmCidade extends javax.swing.JInternalFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Codigo:");
+
+        jTextField1.setEditable(false);
+        jTextField1.setEnabled(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Descrição:");
@@ -135,10 +194,26 @@ public class FrmCidade extends javax.swing.JInternalFrame {
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(600);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(30);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lblAuxiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 266, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAuxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -154,8 +229,8 @@ public class FrmCidade extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(471, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +248,9 @@ public class FrmCidade extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -181,24 +258,72 @@ public class FrmCidade extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        ativaBotoes("inserindo/editando");
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        ativaBotoes("cancelar");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
+        lblAuxiliar.setText("Incluir Novo registro.");
+    }//GEN-LAST:event_btnNovoMouseEntered
+
+    private void btnNovoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseExited
+        lblAuxiliar.setText(null);
+    }//GEN-LAST:event_btnNovoMouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnGravar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPrimeiro;
+    private javax.swing.JButton btnSeguinte;
+    private javax.swing.JButton btnUltimo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblAuxiliar;
     // End of variables declaration//GEN-END:variables
+    private void ativaBotoes(String estado){
+        if(estado.equalsIgnoreCase("inserindo/editando")){
+            btnCancelar.setEnabled(true);
+            btnGravar.setEnabled(true);
+            btnEditar.setEnabled(false);
+            btnNovo.setEnabled(false);
+            btnDeletar.setEnabled(false);
+            btnPrimeiro.setEnabled(false);
+            btnAnterior.setEnabled(false);
+            btnSeguinte.setEnabled(false);
+            btnUltimo.setEnabled(false);
+        }
+        if(estado.equalsIgnoreCase("cancelar")){
+            btnCancelar.setEnabled(false);
+            btnGravar.setEnabled(false);
+            btnEditar.setEnabled(true);
+            btnNovo.setEnabled(true);
+            btnDeletar.setEnabled(true);
+            btnPrimeiro.setEnabled(true);
+            btnAnterior.setEnabled(true);
+            btnSeguinte.setEnabled(true);
+            btnUltimo.setEnabled(true);
+        }
+    }
 }

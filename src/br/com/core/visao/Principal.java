@@ -3,9 +3,11 @@ package br.com.core.visao;
 import javax.swing.JOptionPane;
 import br.com.core.predefinido.Validacoes;
 import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-
+import javax.swing.JLayeredPane;
 /**
  * @author Core System™
  * @version v1.0
@@ -28,10 +30,13 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mCadastros = new javax.swing.JMenu();
         miMaterial = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        miFornecedor = new javax.swing.JMenuItem();
+        mTabelas = new javax.swing.JMenu();
+        miCidade = new javax.swing.JMenuItem();
+        miUF = new javax.swing.JMenuItem();
         mMovimentacao = new javax.swing.JMenu();
         miRecebimento = new javax.swing.JMenuItem();
-        miRetirada = new javax.swing.JMenuItem();
+        miVenda = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         mConfiguracoes = new javax.swing.JMenu();
         miEmpresa = new javax.swing.JMenuItem();
@@ -49,7 +54,6 @@ public class Principal extends javax.swing.JFrame {
         mCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Cadastrar.png"))); // NOI18N
         mCadastros.setText("Cadastros");
 
-        miMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Material.png"))); // NOI18N
         miMaterial.setText("Material");
         miMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,20 +62,34 @@ public class Principal extends javax.swing.JFrame {
         });
         mCadastros.add(miMaterial);
 
-        jMenuItem3.setText("Fornecedor");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        miFornecedor.setText("Fornecedor");
+        miFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                miFornecedorActionPerformed(evt);
             }
         });
-        mCadastros.add(jMenuItem3);
+        mCadastros.add(miFornecedor);
+
+        mTabelas.setText("Tabelas");
+
+        miCidade.setText("Cidade");
+        miCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCidadeActionPerformed(evt);
+            }
+        });
+        mTabelas.add(miCidade);
+
+        miUF.setText("UF");
+        mTabelas.add(miUF);
+
+        mCadastros.add(mTabelas);
 
         jMenuBar1.add(mCadastros);
 
         mMovimentacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Movimentacoes.png"))); // NOI18N
         mMovimentacao.setText("Movimentação");
 
-        miRecebimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Recebimento.png"))); // NOI18N
         miRecebimento.setText("Recebimento");
         miRecebimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,16 +98,14 @@ public class Principal extends javax.swing.JFrame {
         });
         mMovimentacao.add(miRecebimento);
 
-        miRetirada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Retirada.png"))); // NOI18N
-        miRetirada.setText("Retirada");
-        miRetirada.addActionListener(new java.awt.event.ActionListener() {
+        miVenda.setText("Venda");
+        miVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miRetiradaActionPerformed(evt);
+                miVendaActionPerformed(evt);
             }
         });
-        mMovimentacao.add(miRetirada);
+        mMovimentacao.add(miVenda);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_imgs/Meus Icones/Graphic.png"))); // NOI18N
         jMenuItem2.setText("Balanço");
         mMovimentacao.add(jMenuItem2);
 
@@ -163,44 +179,44 @@ public class Principal extends javax.swing.JFrame {
     @SuppressWarnings({"empty-statement", "CallToThreadDumpStack"})
     private void miMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMaterialActionPerformed
 
-        if (cadMaterial != null && !cadMaterial.isVisible()) {
-            deskPane.remove(cadMaterial);
-            cadMaterial = null;
+        if (getCadMaterial() != null && !cadMaterial.isVisible()) {
+            deskPane.remove(getCadMaterial());
+            setCadMaterial(null);
         }
-        if (cadMaterial == null) {
-            cadMaterial = new FrmCadMaterial(this);
+        if (getCadMaterial() == null) {
+            setCadMaterial(new FrmCadMaterial(this));
             Validacoes v = new Validacoes();
-            v.posicao(this, cadMaterial);
-            deskPane.add(cadMaterial);
+            v.posicao(this, getCadMaterial());
+            deskPane.add(getCadMaterial());
             try {
-                cadMaterial.setSelected(true);
+                getCadMaterial().setSelected(true);
             } catch (PropertyVetoException ex) {
                 ex.printStackTrace();
             }
         } else {
-            cadMaterial.toFront();
+            getCadMaterial().toFront();
         }
 
     }//GEN-LAST:event_miMaterialActionPerformed
 
     @SuppressWarnings("CallToThreadDumpStack")
     private void miEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEmpresaActionPerformed
-        if (cadEmpresa != null && !cadEmpresa.isVisible()) {
-            deskPane.remove(cadEmpresa);
-            cadEmpresa = null;
+        if (getCadEmpresa() != null && !cadEmpresa.isVisible()) {
+            deskPane.remove(getCadEmpresa());
+            setCadEmpresa(null);
         }
-        if (cadEmpresa == null) {
-            cadEmpresa = new FrmCadEmpresa();
+        if (getCadEmpresa() == null) {
+            setCadEmpresa(new FrmCadEmpresa());
             Validacoes v = new Validacoes();
-            v.posicao(this, cadEmpresa);
-            deskPane.add(cadEmpresa);
+            v.posicao(this, getCadEmpresa());
+            deskPane.add(getCadEmpresa());
             try {
-                cadEmpresa.setSelected(true);
+                getCadEmpresa().setSelected(true);
             } catch (PropertyVetoException ex) {
                 ex.printStackTrace();
             }
         } else {
-            cadEmpresa.toFront();
+            getCadEmpresa().toFront();
         }
     }//GEN-LAST:event_miEmpresaActionPerformed
 
@@ -213,48 +229,124 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mSairMouseClicked
 
     @SuppressWarnings("CallToThreadDumpStack")
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        if (cadFornecedor != null && !cadFornecedor.isVisible()) {
-            deskPane.remove(cadFornecedor);
-            cadFornecedor = null;
+    private void miFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFornecedorActionPerformed
+        if (getCadFornecedor() != null && !cadFornecedor.isVisible()) {
+            deskPane.remove(getCadFornecedor());
+            setCadFornecedor(null);
         }
-        if (cadFornecedor == null) {
-            cadFornecedor = new FrmFornecedor();
+        if (getCadFornecedor() == null) {
+            setCadFornecedor(new FrmFornecedor());
             Validacoes v = new Validacoes();
-            v.posicao(this, cadFornecedor);
-            deskPane.add(cadFornecedor);
+            v.posicao(this, getCadFornecedor());
+            deskPane.add(getCadFornecedor());
             try {
-                cadFornecedor.setSelected(true);
+                getCadFornecedor().setSelected(true);
             } catch (PropertyVetoException ex) {
                 ex.printStackTrace();
             }
         } else {
-            cadFornecedor.toFront();
+            getCadFornecedor().toFront();
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_miFornecedorActionPerformed
 
     @SuppressWarnings("CallToThreadDumpStack")
-    private void miRetiradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRetiradaActionPerformed
-        // FrmRetirada
-    }//GEN-LAST:event_miRetiradaActionPerformed
+    private void miVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVendaActionPerformed
+         //Validacoes v = new Validacoes();
+         //v.a(deskPane, this, new FrmUnidadeMedida());
+        
+    }//GEN-LAST:event_miVendaActionPerformed
+
+    private void miCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCidadeActionPerformed
+        if (getCadCidade() != null && !cadCidade.isVisible()) {
+            deskPane.remove(getCadCidade());
+            setCadCidade(null);
+        }
+        if (getCadCidade() == null) {
+            setCadCidade(new FrmCidade());
+            Validacoes v = new Validacoes();
+            v.posicao(this, getCadCidade());
+            deskPane.add(getCadCidade());
+            try {
+                getCadCidade().setSelected(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            getCadCidade().toFront();
+        }
+    }//GEN-LAST:event_miCidadeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane deskPane;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mCadastros;
     private javax.swing.JMenu mConfiguracoes;
     private javax.swing.JMenu mMovimentacao;
     private javax.swing.JMenu mSair;
+    private javax.swing.JMenu mTabelas;
+    private javax.swing.JMenuItem miCidade;
     private javax.swing.JMenuItem miEmpresa;
+    private javax.swing.JMenuItem miFornecedor;
     private javax.swing.JMenuItem miMaterial;
     private javax.swing.JMenuItem miRecebimento;
-    private javax.swing.JMenuItem miRetirada;
+    private javax.swing.JMenuItem miUF;
+    private javax.swing.JMenuItem miVenda;
     // End of variables declaration//GEN-END:variables
     private JInternalFrame cadMaterial;
     private JInternalFrame cadEmpresa;
     private JInternalFrame cadFornecedor;
     private JInternalFrame unidadeMedida;
     private JInternalFrame recebimento;
+    private JInternalFrame cadCidade;
+
+    
+    public JInternalFrame getCadMaterial() {
+        return cadMaterial;
+    }
+
+    public void setCadMaterial(JInternalFrame cadMaterial) {
+        this.cadMaterial = cadMaterial;
+    }
+
+    public JInternalFrame getCadEmpresa() {
+        return cadEmpresa;
+    }
+
+    public void setCadEmpresa(JInternalFrame cadEmpresa) {
+        this.cadEmpresa = cadEmpresa;
+    }
+
+    public JInternalFrame getCadFornecedor() {
+        return cadFornecedor;
+    }
+
+    public void setCadFornecedor(JInternalFrame cadFornecedor) {
+        this.cadFornecedor = cadFornecedor;
+    }
+
+    public JInternalFrame getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(JInternalFrame unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
+    
+    public JLayeredPane getDeskPane() {
+        return deskPane;
+    }
+
+    public void setDeskPane(JLayeredPane deskPane) {
+        this.deskPane = deskPane;
+    }
+
+    public JInternalFrame getCadCidade() {
+        return cadCidade;
+    }
+
+    public void setCadCidade(JInternalFrame cadCidade) {
+        this.cadCidade = cadCidade;
+    }
 }

@@ -7,6 +7,7 @@ import br.com.core.predefinido.TamanhoFixo;
 import br.com.core.predefinido.UpperCaseDocument;
 import br.com.core.predefinido.Validacoes;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 
 /**
  * @author Core System™
@@ -21,6 +22,7 @@ public final class Login extends javax.swing.JFrame {
         setLocationRelativeTo(getOwner());
         this.getContentPane().setBackground(new Color(0, 0, 0));
         this.setIconImage(new ImageIcon(getClass().getResource("/_imgs/logo_empresa.png")).getImage());
+        this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
     }
 
     @SuppressWarnings("unchecked")

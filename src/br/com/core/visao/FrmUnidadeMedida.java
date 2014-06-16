@@ -9,7 +9,6 @@ public class FrmUnidadeMedida extends javax.swing.JInternalFrame {
     public FrmUnidadeMedida() {
         initComponents();
         this.setVisible(true);
-
     }
 
     @SuppressWarnings("unchecked")

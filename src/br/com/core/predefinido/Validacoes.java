@@ -1,13 +1,10 @@
 package br.com.core.predefinido;
 
-import br.com.core.visao.FrmRecebimento;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,7 +48,7 @@ public class Validacoes {
             JOptionPane.showMessageDialog(null, "Erro ao selecionar o iFrame. \nErro:\n" + ex.getMessage());
         }
     }
-    
+
     public String geraPassword() {
         Date data = new Date();
         SimpleDateFormat dia = new SimpleDateFormat("dd"),
@@ -62,6 +59,4 @@ public class Validacoes {
 
         return pwd;
     }
-    
-    
 }

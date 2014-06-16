@@ -103,7 +103,7 @@
                 <Component class="javax.swing.JTable" name="tblItens">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="4">
+                      <Table columnCount="5" rowCount="1">
                         <Column editable="true" title="C&#xf3;digo" type="java.lang.Integer"/>
                         <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.String"/>
                         <Column editable="true" title="Vlr. Unit" type="java.lang.Double"/>
@@ -353,8 +353,11 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDataEmissaoNota">
                   <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Data Emiss&#xe3;o"/>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                   </AccessibilityProperties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(mascara(&quot;##/##/####&quot;))"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtValorNota">
                 </Component>
@@ -390,6 +393,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtFornecedor">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
